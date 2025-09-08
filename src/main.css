@@ -1,0 +1,12 @@
+@import 'tailwindcss';
+
+.active {
+  font-size: 40px;
+  font-weight: bold;
+}
+.red {
+  color: red;
+}
+.title {
+  color: black;
+}
