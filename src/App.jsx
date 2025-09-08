@@ -1,33 +1,22 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import TextField from '@/components/TextField.jsx'
 
 export default function App() {
-  // 양식(대화형) 요소 => Form
-  const [text, setText] = useState('')
-  const [password, setPassword] = useState('')
-
   return (
-    <form
-      onSubmit={event => {
-        event.preventDefault()
-        console.log(text, password)
-      }}>
-      <input
-        className="border-2 border-gray-400"
-        type="text"
-        value={text}
-        onChange={event => {
-          setText(event.target.value)
-        }}
+    <>
+      <TextField
+        type="email"
+        label="이메일"
       />
-      <input
-        className="border-2 border-gray-400"
+      <TextField
         type="password"
-        value={password}
-        onChange={event => {
-          setPassword(event.target.value)
-        }}
+        label="비밀번호"
       />
-      <button type="submit">로그인</button>
-    </form>
+      <TextField
+        type="text"
+        label="이름"
+      />
+      <TextField type="text" />
+    </>
   )
 }
