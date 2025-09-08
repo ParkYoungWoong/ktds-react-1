@@ -1,30 +1,33 @@
 import { useState, useEffect } from 'react'
-import axios from 'axios'
 
 export default function App() {
-  const [movies, setMovies] = useState([])
-
-  // useEffect(실행할함수, 의존성배열)
-  useEffect(() => {
-    fetchMovies()
-  }, [])
-
-  async function fetchMovies() {
-    const { data } = await axios.get(
-      'https://omdbapi.com?apikey=7035c60c&s=avengers'
-    )
-    const { Search } = data
-    setMovies(Search)
-  }
+  // 양식(대화형) 요소 => Form
+  const [text, setText] = useState('')
+  const [password, setPassword] = useState('')
 
   return (
-    <>
-      <ul>
-        {movies.map(movie => {
-          return <li key={movie.imdbID}>{movie.Title}</li>
-        })}
-      </ul>
-      {/* <button onClick={fetchMovies}>영화 정보 가져오기!</button> */}
-    </>
+    <form
+      onSubmit={event => {
+        event.preventDefault()
+        console.log(text, password)
+      }}>
+      <input
+        className="border-2 border-gray-400"
+        type="text"
+        value={text}
+        onChange={event => {
+          setText(event.target.value)
+        }}
+      />
+      <input
+        className="border-2 border-gray-400"
+        type="password"
+        value={password}
+        onChange={event => {
+          setPassword(event.target.value)
+        }}
+      />
+      <button type="submit">로그인</button>
+    </form>
   )
 }
