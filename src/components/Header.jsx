@@ -1,11 +1,12 @@
-import { Link } from 'react-router'
+import { NavLink } from 'react-router'
 
 export default function Header() {
   return (
     <header>
-      <nav>
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
+      <nav className="flex gap-2">
+        <NavLink to="/">Home</NavLink>
+        <NavLink to="/about">About</NavLink>
+        <NavLink to="/movies">Movies</NavLink>
       </nav>
     </header>
   )
