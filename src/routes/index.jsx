@@ -5,6 +5,9 @@ import Home from '@/routes/pages/Home'
 import About from '@/routes/pages/About'
 import Movies from '@/routes/pages/Movies'
 import MovieDetails from '@/routes/pages/MovieDetails'
+import SignIn from '@/routes/pages/SignIn'
+import { requiresAuth } from '@/routes/loaders/requiresAuth'
+import { guestOnly } from '@/routes/loaders/guestOnly'
 
 // http://localhost:5173/signin
 // http://localhost:5173/signup
@@ -25,11 +28,18 @@ const router = createBrowserRouter([
       },
       {
         path: '/movies',
-        element: <Movies />
+        element: <Movies />,
+        loader: requiresAuth
       },
       {
         path: '/movies/:movieId',
-        element: <MovieDetails />
+        element: <MovieDetails />,
+        loader: requiresAuth
+      },
+      {
+        path: '/signin',
+        element: <SignIn />,
+        loader: guestOnly
       }
     ]
   }

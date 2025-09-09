@@ -1,17 +1,27 @@
 import { useState } from 'react'
 import TextField from '@/components/TextField.jsx'
 import Button from '@/components/Button.jsx'
+import api, { ACCESS_TOKEN_NAME } from '@/lib/api'
+import { useNavigate } from 'react-router'
 
-export default function App() {
+export default function SignIn() {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [name, setName] = useState('')
   const [isLoading, setIsLoading] = useState(false)
+  const navigate = useNavigate()
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault()
     setIsLoading(true)
-    console.log(email, password, name) // 요청/응답
+    console.log(email, password) // 요청/응답
+    // const { data } = await api.post('/auth/signin', {
+    //   email,
+    //   password
+    // })
+    // const { user, accessToken } = data
+    localStorage.setItem(ACCESS_TOKEN_NAME, 'abcd1234')
+    // window.location.href = '/'
+    navigate('/')
     setTimeout(() => {
       setIsLoading(false)
     }, 2000)
@@ -34,17 +44,10 @@ export default function App() {
         value={password}
         onChange={event => setPassword(event.target.value)}
       />
-      <TextField
-        type="text"
-        label="이름"
-        value={name}
-        onChange={event => setName(event.target.value)}
-      />
-      {/* <button type="submit">회원가입</button> */}
       <Button
         type="submit"
         loading={isLoading}>
-        회원가입
+        로그인
       </Button>
     </form>
   )
