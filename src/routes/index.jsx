@@ -4,10 +4,10 @@ import Default from '@/routes/layouts/Default'
 import Home from '@/routes/pages/Home'
 import About from '@/routes/pages/About'
 import Movies from '@/routes/pages/Movies'
+import MovieDetails from '@/routes/pages/MovieDetails'
 
 // http://localhost:5173/signin
 // http://localhost:5173/signup
-// http://localhost:5173/movies
 // http://localhost:5173/movies/tt1234567
 
 const router = createBrowserRouter([
@@ -26,6 +26,10 @@ const router = createBrowserRouter([
       {
         path: '/movies',
         element: <Movies />
+      },
+      {
+        path: '/movies/:movieId',
+        element: <MovieDetails />
       }
     ]
   }

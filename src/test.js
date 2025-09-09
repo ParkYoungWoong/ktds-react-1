@@ -1,9 +1,12 @@
-const user = {
-  name: 'Neo',
-  // age: 22,
-  email: 'neo@heropy.dev'
+const axios = {
+  get: url => {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve(1234)
+      }, 3000)
+    })
+  }
 }
 
-const { age = 77, isValid = false } = user
-console.log(age) // 22
-console.log(isValid) // false
+const res = await axios.get('')
+console.log(res) // ???
