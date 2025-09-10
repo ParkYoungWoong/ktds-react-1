@@ -6,6 +6,7 @@ import About from '@/routes/pages/About'
 import Movies from '@/routes/pages/Movies'
 import MovieDetails from '@/routes/pages/MovieDetails'
 import SignIn from '@/routes/pages/SignIn'
+import NotFound from '@/routes/pages/NotFound'
 import { requiresAuth } from '@/routes/loaders/requiresAuth'
 import { guestOnly } from '@/routes/loaders/guestOnly'
 
@@ -40,6 +41,10 @@ const router = createBrowserRouter([
         path: '/signin',
         element: <SignIn />,
         loader: guestOnly
+      },
+      {
+        path: '*',
+        element: <NotFound />
       }
     ]
   }

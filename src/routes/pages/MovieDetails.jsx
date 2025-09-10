@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react'
 import { useParams } from 'react-router'
 import axios from 'axios'
 
+// http://localhost:5173/movies/tt1234567
+
 export default function MovieDetails() {
   const { movieId } = useParams()
   const [movie, setMovie] = useState()

@@ -1,4 +1,4 @@
-import { ACCESS_TOKEN_NAME } from '@/lib/api'
+import api, { ACCESS_TOKEN_NAME } from '@/lib/api'
 import { redirect } from 'react-router'
 
 export async function requiresAuth(request) {

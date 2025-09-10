@@ -14,12 +14,12 @@ export default function SignIn() {
     event.preventDefault()
     setIsLoading(true)
     console.log(email, password) // 요청/응답
-    // const { data } = await api.post('/auth/signin', {
-    //   email,
-    //   password
-    // })
-    // const { user, accessToken } = data
-    localStorage.setItem(ACCESS_TOKEN_NAME, 'abcd1234')
+    const { data } = await api.post('/auth/signin', {
+      email,
+      password
+    })
+    const { user, token } = data
+    localStorage.setItem(ACCESS_TOKEN_NAME, token)
     // window.location.href = '/'
     navigate('/')
     setTimeout(() => {

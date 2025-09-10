@@ -1,33 +1,14 @@
-import axios from 'axios'
-import { useState } from 'react'
 import TextField from '@/components/TextField'
 import Button from '@/components/Button'
 import { Link } from 'react-router'
+import { useMovieStore } from '@/stores/movie'
 
 export default function Movies() {
-  const [movies, setMovies] = useState([])
-  const [searchText, setSearchText] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
-
-  async function fetchMovies() {
-    try {
-      if (isLoading) return
-      setIsLoading(true)
-      // await new Promise(resolve => setTimeout(resolve, 2000))
-      const { data } = await axios.get(
-        `https://omdbapi.com?apikey=7035c60c&s=${searchText}`
-      )
-      if (data.Response === 'False') {
-        throw new Error(data.Error)
-      }
-      setMovies(data.Search || [])
-    } catch (error) {
-      console.log(error.message)
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
+  const searchText = useMovieStore(state => state.searchText)
+  const movies = useMovieStore(state => state.movies)
+  const isLoading = useMovieStore(state => state.isLoading)
+  const setSearchText = useMovieStore(state => state.setSearchText)
+  const fetchMovies = useMovieStore(state => state.fetchMovies)
   return (
     <main className="mx-auto max-w-[1200px]">
       <div className="grid grid-cols-[1fr_100px] gap-2">

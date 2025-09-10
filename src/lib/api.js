@@ -5,9 +5,10 @@ const REFRESH_URL = '/auth/refresh'
 const SIGNIN_URL = '/signin'
 
 const options = {
-  baseURL: 'http://api.heropy.dev/v1',
+  baseURL: 'https://api.heropy.dev/v1',
   headers: {
-    'Content-Type': 'application/json'
+    'Content-Type': 'application/json',
+    apikey: 'JszsU3gmV60wClg8ux96Dc3QcIQl0nQV'
   }
 }
 
